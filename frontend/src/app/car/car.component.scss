@@ -1,0 +1,78 @@
+
+   * {
+    overflow-x: hidden; /* Hide horizontal scrollbar and prevent horizontal scrolling */
+}
+input{
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.45);
+   
+  height: 50px;
+  overflow-y: none;
+    backdrop-filter: blur(15px);
+}
+input:focus{
+    border: 1px solid rgba(255, 255, 255, .25);
+    
+    background-color: rgba(255, 255, 255, 0.45);
+   
+  
+    backdrop-filter: blur(15px);
+}
+
+.container .element {
+    width: 100%; /* Use percentage-based width to ensure it fits within the container */
+    margin: 0 auto; /* Center the element if needed */
+}
+
+//
+
+:root {
+    font-size: 20px;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  p:not(:last-child) {
+    margin-bottom: 1.5em;
+  }
+  
+  body {
+    font: 1em/1.618 Inter, sans-serif;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    min-height: 100vh;
+    padding: 30px;
+    margin: 0;
+    
+    color: #224;
+    background:
+      url(https://source.unsplash.com/E8Ufcyxz514/2400x1823)
+      center / cover no-repeat fixed;
+  }
+  
+  .card {
+ 
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  
+    backdrop-filter: blur(15px);
+    transition: transform 0.3s ease;
+  }
+  .card:hover {
+    transform: translate(14px,-10px); /* Move the card on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increase shadow on hover for a "lifted" effect */
+   }

@@ -1,0 +1,89 @@
+<div class="card shadow my-5 mx-auto" style="width: 600px;">
+    <div class="card-body">
+      <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="CarID">CarID:</label>
+          <input type="text" class="form-control" formControlName="CarID">
+          <div *ngIf="carForm.get('CarID').invalid && carForm.get('CarID').touched" class="text-danger">
+            CarID is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Manufacturer">Manufacturer:</label>
+          <input type="text" class="form-control" formControlName="Manufacturer">
+          <div *ngIf="carForm.get('Manufacturer').invalid && carForm.get('Manufacturer').touched" class="text-danger">
+            Manufacturer is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Model">Model:</label>
+          <input type="text" class="form-control" formControlName="Model">
+          <div *ngIf="carForm.get('Model').invalid && carForm.get('Model').touched" class="text-danger">
+            Model is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="TransmissionType">Transmission Type:</label>
+          <input type="text" class="form-control" formControlName="TransmissionType">
+          <div *ngIf="carForm.get('TransmissionType').invalid && carForm.get('TransmissionType').touched" class="text-danger">
+            Transmission Type is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="NoOfSeats">Number of Seats:</label>
+          <input type="number" class="form-control" formControlName="NoOfSeats">
+          <div *ngIf="carForm.get('NoOfSeats').invalid && carForm.get('NoOfSeats').touched" class="text-danger">
+            Number of Seats is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="EngineCapacity">Engine Capacity:</label>
+          <input type="number" class="form-control" formControlName="EngineCapacity">
+          <div *ngIf="carForm.get('EngineCapacity').invalid && carForm.get('EngineCapacity').touched" class="text-danger">
+            Engine Capacity is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="CarType">Car Type:</label>
+          <input type="text" class="form-control" formControlName="CarType">
+        </div>
+        <div class="form-group">
+          <label for="YearOfManufacture">Year of Manufacture:</label>
+          <input type="number" class="form-control" formControlName="YearOfManufacture">
+          <div *ngIf="carForm.get('YearOfManufacture').invalid && carForm.get('YearOfManufacture').touched" class="text-danger">
+            Year of Manufacture is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="FuelType">Fuel Type:</label>
+          <input type="text" class="form-control" formControlName="FuelType">
+        </div>
+        <div class="form-group">
+          <label for="Mileage">Mileage:</label>
+          <input type="number" class="form-control" formControlName="Mileage">
+          <div *ngIf="carForm.get('Mileage').invalid && carForm.get('Mileage').touched" class="text-danger">
+            Mileage is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Availability">Availability:</label>
+          <input type="checkbox" class="form-control" formControlName="Availability">
+          <div *ngIf="carForm.get('Availability').invalid && carForm.get('Availability').touched" class="text-danger">
+            Availability is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="CostPerHour">Cost Per Hour:</label>
+          <input type="number" class="form-control" formControlName="CostPerHour">
+          <div *ngIf="carForm.get('CostPerHour').invalid && carForm.get('CostPerHour').touched" class="text-danger">
+            Cost Per Hour is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="LocationOfCar">Location of Car:</label>
+          <input type="text" class="form-control" formControlName="LocationOfCar">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>

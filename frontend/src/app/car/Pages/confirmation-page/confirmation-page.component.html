@@ -1,0 +1,10 @@
+<div class="container">
+    <div class=" row justify-content-center mt-5"> 
+       <div class="col-md-6 text-center alert alert-info"> 
+         <h2 class="display-4">Payment Success!</h2> 
+         <p class="lead">Your transaction ID is: {{ transactionId }}</p> 
+         <p>{{reservation.carID}}</p>
+         <button class="btn btn-primary" (click)="generateBill(reservation)">Generate Bill</button> 
+       </div>
+    </div>
+   </div>

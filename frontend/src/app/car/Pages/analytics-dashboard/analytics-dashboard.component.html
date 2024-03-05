@@ -1,0 +1,106 @@
+<div class="container">
+
+  <!-- Reservations per Day Chart -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-even">
+        <div class="card-body">
+          <h5 class="card-title">Reservations per Day</h5>
+          <canvas id="myChart" style="height: 300px;"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Total Revenue, Average Order Value, Total Orders, and Repeat Customers Charts -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card card-even">
+            <div class="card-body card-even flex fd-row justify-content-center align-items-center">
+              <h5 class="card-title align-item-center">Total Revenue</h5>
+              <p class="card-text revenue">{{ totalRevenue | currency }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 ">
+          <div class="card card-even">
+            <div class="card-body">
+              <h5 class="card-title">Average Order Value</h5>
+              <canvas id="averageOrderValueChart" style="height: 200px;"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-even">
+            <div class="card-body">
+              <h5 class="card-title">Total Orders</h5>
+              <canvas id="totalOrdersChart" style="height: 200px;"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Manufacturers Preferences, Transmission Preferences, Fuel Type Preferences, and Car Type Preferences Charts -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card card-even">
+            <div class="card-body">
+              <h5 class="card-title">Manufacturers Preferences</h5>
+              <canvas id="manufacturersChart" style="height: 200px;"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-even">
+            <div class="card-body">
+              <h5 class="card-title">Transmission Preferences</h5>
+              <canvas id="transmissionChart" style="height: 200px;"></canvas>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card card-even">
+            <div class="card-body">
+              <h5 class="card-title">Fuel Type Preferences</h5>
+              <canvas id="fuelTypeChart" style="height: 200px;"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-even">
+            <div class="card-body">
+              <h5 class="card-title">Car Type Preferences</h5>
+              <canvas id="carTypeChart" style="height: 200px;"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-even">
+            <div class="card-body">
+              <h5 class="card-title">Repeat Customers</h5>
+              <canvas id="repeatCustomersChart" style="height: 200px;"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+   
+  </div>
+</div>

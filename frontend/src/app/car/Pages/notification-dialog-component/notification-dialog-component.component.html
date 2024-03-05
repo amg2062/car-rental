@@ -1,0 +1,20 @@
+<div class="container ">
+  <h2>Upcoming Reservations</h2>
+
+  <div class="card custom-dialog">
+    <div class="card mb-3" *ngFor="let reservation of data.reservations">
+      <div class="card-body">
+        <h5 class="card-title">Reservation ID: {{ reservation.reservationID }}</h5>
+        <p class="card-text">Car: {{ reservation.carDetails.manufacturer }} {{ reservation.carDetails.model }}</p>
+        <p class="card-text">Start Date: {{ reservation.reservationStart | date }}</p>
+        <p class="card-text">End Date: {{ reservation.reservationEnd | date }}</p>
+        <p class="card-text">Total Car Cost: {{ reservation.totalCarCost | currency }}</p>
+        <p class="card-text">Status: {{ reservation.status }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4 flex d-flex justify-content-center  align-items-center">
+    <button class="btn btn-primary" (click)="closeDialog()">Close</button>
+  </div>
+</div>

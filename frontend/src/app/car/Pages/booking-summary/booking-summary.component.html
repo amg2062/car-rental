@@ -1,0 +1,27 @@
+
+<div class="container">
+    <h2 class="text-center mb-4">Booking Summary</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <p><strong>Manufacturer:</strong> {{ selectedCar.manufacturer }}</p>
+            <p><strong>Model:</strong> {{ selectedCar.model }}</p>
+            <p><strong>Start Date:</strong> {{ startDate | date }}</p>
+    <p><strong>End Date:</strong> {{ endDate | date }}</p>
+            <p><strong>Transmission Type:</strong> {{ selectedCar.transmissionType }}</p>
+            <!-- <p><strong>Car Type:</strong> {{ selectedCar.carType }}</p>
+            <p><strong>Location:</strong> {{ selectedCar.locationOfCar }}</p>
+            <p><strong>Engine Capacity:</strong> {{ selectedCar.engineCapacity }} cc</p>
+            <p><strong>Fuel Type:</strong> {{ selectedCar.fuelType }}</p>
+            <p><strong>No. of Seats:</strong> {{ selectedCar.noOfSeats }}</p> -->
+            <p><strong>Year of Manufacture:</strong> {{ selectedCar.yearOfManufacture }}</p>
+            <p><strong>Mileage:</strong> {{ selectedCar.mileage }} km</p>
+            <p><strong>Cost per Hour:</strong> {{ selectedCar.costPerHour }}</p>
+            <p><strong>Total Cost:</strong> {{ selectedCar.totalCost }}</p>
+            <button class="btn btn-primary" (click)="confirmBooking()">Confirm Booking</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

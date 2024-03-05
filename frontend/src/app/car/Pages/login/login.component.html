@@ -1,0 +1,54 @@
+
+
+
+<section class="h-100  flex d-flex flex-column  align-items-center justify-content-between">
+    <div class="container-fluid h-custom h-100  flex d-flex flex-column  align-items-center justify-content-between">
+        <div class="row d-flex justify-content-center align-items-center h-80">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                    class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 justify-content-evenly flex flex-column h-50">
+
+
+
+                <h1 style="font-size: 2rem;">Login</h1>
+
+                <form [formGroup]="loginForm" (submit)="login()" class="login-form mt-4">
+                    <div class="form-outline mb-4">
+                        <input type="text" class="form-control form-control-lg login-input " id="username"
+                            formControlName="username"
+                            [ngClass]="{'login-input--invalid': loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)}"
+                            placeholder="Enter your User Name" />
+                        <label class="form-label" for="form3Example3">User Name</label>
+                    </div>
+
+
+                    <div class="form-outline mb-3">
+                        <input class="form-control form-control-lg login-input f" type="password" id="password"
+                            formControlName="password"
+                            [ngClass]="{'login-input--invalid': loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)}"
+                            placeholder="Enter password" />
+                        <label class="form-label" for="form3Example4">Password</label>
+                    </div>
+
+                    <div class="form-outline mb-3" style="display: none;">
+                        <input class="form-control form-control-lg login-input f" type="text" id="role"
+                            formControlName="role"
+                            [ngClass]="{'login-input--invalid': loginForm.controls['role'].invalid && (loginForm.controls['role'].dirty || loginForm.controls['role'].touched)}"
+                            [ngModel]="defaultRole" placeholder="Enter password" />
+                        <label class="form-label" for="form3Example4">Role</label>
+                    </div>
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+                        <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a (click)="gotoSignup()"
+                                class="link-danger">Register</a></p>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>

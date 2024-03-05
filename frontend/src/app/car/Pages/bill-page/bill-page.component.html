@@ -1,0 +1,43 @@
+<div class="container">
+    <h1 class="mt-4">Bills</h1>
+    <div *ngIf="bills && bills.length > 0">
+      <div class="row">
+        <ng-container *ngFor="let bill of bills" class="card">
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+          
+                <p class="card-text">
+                  <strong>Reservation Start:</strong> {{ bill.reservationStart | date: 'medium' }}
+                </p>
+                <p class="card-text">
+                  <strong>Reservation End:</strong> {{ bill.reservationEnd | date: 'medium' }}
+                </p>
+                <p class="card-text">
+                  <strong>Total Car Cost:</strong> {{ bill.totalCarCost | currency }}
+                </p>
+                <p class="card-text">
+                  <strong>Cost Per Hour:</strong> {{ bill.carDetails.costPerHour | currency }}
+                </p>
+               
+            
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> {{ bill.carDetails.manufacturer }}
+                </p>
+                <p class="card-text">
+                  <strong>Model:</strong> {{ bill.carDetails.model }}
+                </p>
+                <div class="">
+                  <button class="btn btn-primary" (click)="printBill(bill)">Print Bill</button>
+                 </div>
+              </div>
+            </div>
+          </div>
+          
+        </ng-container>
+      </div>
+    </div>
+    <div *ngIf="bills && bills.length === 0">
+      <p>No bills found for this user.</p>
+    </div>
+  </div>

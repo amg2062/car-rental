@@ -1,0 +1,33 @@
+.card-even {
+    height: 400px; 
+    margin-bottom: 20px; 
+   }
+   
+   .card-even .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+   }
+   .revenue{
+    color: rgb(23, 179, 127);
+    font-size: 2rem;
+   }
+
+   .card {
+ 
+    border: 1px solid rgba(255, 255, 255, .25);
+    // color : rgb(800,0,200);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.806);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+    gap:10px;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+  }
+  
+    
+    .card:hover {
+      // background-color: rgba(244, 15, 237, 0.988);
+     transform: translate(14px,-10px); 
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    }

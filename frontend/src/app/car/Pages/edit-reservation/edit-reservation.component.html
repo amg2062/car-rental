@@ -1,0 +1,27 @@
+<div class="container w-100 flex flex-column ">
+   
+        
+            <h2 class="my-4 text-center">Your Reservations</h2>
+            <ul class="list-group w-100 align-items-center flex flex-column flex  d-flex justify-content-between align-item-center"style="gap: 26px;">
+                <li *ngFor="let reservation of reservations" class="card list-group-item w-50 gap-3 flex flex-column align-item-center d-flex">
+                    <div class="reservation-card__header w-50">
+                        <h1 class="mb1">{{ reservation.carDetails.manufacturer }} {{ reservation.carDetails.model }}</h1>
+                    </div>
+                    <div class="reservation-card__body w-50">
+                        <p> <strong>Car Type</strong>: {{reservation.carDetails.carType}}</p>
+                        <p><strong>Fuel Type: </strong>{{reservation.carDetails.fuelType}}</p>
+                        <p><strong>Car Location</strong> {{reservation.carDetails.locationOfCar}}</p>
+                        <p><strong>Start Date:</strong> {{ reservation.reservationStart | date:'shortDate' }}</p>
+                        <p><strong>End Date:</strong> {{ reservation.reservationEnd | date:'shortDate' }}</p>
+                        <p><strong>Total Cost:</strong> {{ reservation.totalCarCost | currency:'INR':true }}</p>
+                        <p><strong>Status:</strong> {{ reservation.status }}</p>
+                    </div>
+                    <div class="reservation-card__footer flex flex-row justify-content-between d-flex w-50">
+                        <button class="btn btn-danger btn-sm" (click)="deleteReservation(reservation.reservationID)">Delete Reservation</button>
+                        <button class="btn btn-success btn-sm" (click)="paymentsButton(reservation)">Pay</button>
+                    </div>
+                </li>
+            </ul>
+      
+    
+</div>

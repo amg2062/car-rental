@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "k0QlECZfcZvEj26Q0ezsjRB0dt44w2vXFmr+2NhP1es=",
+  "Source": "CarsIntegration",
+  "BasePath": "_content/CarsIntegration",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "CarsIntegration\\wwwroot",
+      "Source": "CarsIntegration",
+      "ContentRoot": "C:\\Users\\ATGOTE0\\Desktop\\c sharp\\CarsIntegration\\CarsIntegration\\wwwroot\\",
+      "BasePath": "_content/CarsIntegration",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

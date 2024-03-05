@@ -1,0 +1,140 @@
+<div class=" flex fd-column w-100">
+
+
+    <!-- Navbar with login and signup buttons -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center">
+        <div class="container">
+            <a class="navbar-brand" href="#">Car Rental</a>
+            <div class="navbar-nav">
+                <a class="nav-link" (click)="goToLogin()">Login</a>
+                <a class="nav-link"(click)="goToSignin()">Signup</a>
+            </div>
+        </div>
+    </nav>
+    <div class="scroll">
+         <!-- Large photo and product description -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 cover-picture" [style.background-image]="'url(' + coverImageUrl + ')'">
+                <div class="cover-text">
+                    <h1>Discover the Freedom of the Road</h1>
+                    <p>With our premium car rental services, book your next adventure today!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="ftco-section ftco-about">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center"
+                    style="background-image: url('../../../../assets/cars2.jpg');">
+                </div>
+                <div class="col-md-6 wrap-about ftco-animate">
+                    <div class="heading-section heading-section-white pl-md-5">
+                        <span class="subheading">About us</span>
+                        <h2 class="mb-4">Welcome to Carbook</h2>
+                        <p>At Carbook, we are dedicated to providing our customers with the freedom of the open road. 
+                            Our car rental services are designed to offer premium vehicles that cater to all your travel 
+                            needs, whether you're heading to the mountains for a weekend getaway or embarking on a cross-country adventure.</p>
+                        <p>Our team is passionate about ensuring your rental experience is seamless, from the moment you book
+                             to the time you return your vehicle. We take pride in our extensive fleet, meticulously maintained 
+                             to offer the best in comfort and performance. Our commitment to customer satisfaction is unwavering,
+                              and we strive to exceed expectations with every interaction. Join us at Carbook, where every journey begins with a smile.</p>
+                        <p><a  class="btn btn-primary py-3 px-4" (click)="goToLogin()">Gateway to Freedom</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <section class="py-5 bg-light">
+        <div class="container">
+
+            <div class="flex d-flex flex-column justify-content-center align-items-center">
+                <h1 class="subheading">Testimonial</h1>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-12 flex d-flex fd-row justify-content-evenly carousel-testimony ">
+                        <div class="item col-4 rounded">
+                            <div class="testimony-wrap text-center">
+                                <div class="user-img mb-2"
+                                    style="background-image: url('../../../../assets/person_1.jpg'); background-size: cover;">
+                                </div>
+                                <div class="text pt-4">
+                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
+                                        Vokalia and Consonantia, there live the blind texts.</p>
+                                    <p class="name">Roger Scott</p>
+                                    <span class="position">Marketing Manager</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-4 rounded">
+                            <div class="testimony-wrap text-center">
+                                <div class="user-img mb-2"
+                                    style="background-image: url('../../../../assets/person_2.jpg'); background-size: cover;">
+                                </div>
+                                <div class="text pt-4">
+                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
+                                        Vokalia and Consonantia, there live the blind texts.</p>
+                                    <p class="name">Roger Scott</p>
+                                    <span class="position">Marketing Manager</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-4 rounded">
+                            <div class="testimony-wrap text-center">
+                                <div class="user-img mb-2"
+                                    style="background-image: url('../../../../assets/person_3.jpg'); background-size: cover;">
+                                </div>
+                                <div class="text pt-4">
+                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
+                                        Vokalia and Consonantia, there live the blind texts.</p>
+                                    <p class="name">Roger Scott</p>
+                                    <span class="position">Marketing Manager</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Repeat the above item for each testimonial -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+          
+    
+            <!-- Social Media Links -->
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-6 text-center">
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+    
+            <!-- Company Details and Links -->
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-6 text-center">
+                    <p>&copy; 2024 Car Rental. All rights reserved.</p>
+                    <a href="#" class="text-white">Terms of Service</a> |
+                    <a href="#" class="text-white">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+   
+</div>

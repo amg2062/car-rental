@@ -1,0 +1,56 @@
+
+<section class="h-100  flex d-flex flex-column  align-items-center justify-content-between">
+    <div class="container-fluid h-custom h-100  flex d-flex flex-column  align-items-center justify-content-between">
+        <div class="row d-flex justify-content-center align-items-center h-80">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                    class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 justify-content-evenly flex flex-column h-50">
+
+
+
+                <h1 style="font-size: 2rem;">Signup</h1>
+
+                <form [formGroup]="signupForm" (submit)="signup()" class="login-form mt-4">
+                    <div class="form-outline mb-4">
+                        <input  placeholder="Enter your username" type="text" id="username" formControlName="username" class="signup-input form-control" [ngClass]="{'signup-input--invalid': signupForm.controls['username'].invalid && (signupForm.controls['username'].dirty || signupForm.controls['username'].touched)}">
+                    <div *ngIf="signupForm.controls['username'].errors && (signupForm.controls['username'].dirty || signupForm.controls['username'].touched)" class="signup-feedback invalid-feedback">
+                        Username is required.
+                    </div>
+                        <label class="form-label" for="form3Example3">UserID</label>
+                    </div>
+
+
+                    <div class="form-outline mb-3">
+                        <input placeholder="Enter your Password" type="password" id="password" formControlName="password" class="signup-input form-control" [ngClass]="{'signup-input--invalid': signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)}">
+                    <div *ngIf="signupForm.controls['password'].errors && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)" class="signup-feedback invalid-feedback">
+                        Password is required.
+                    </div>
+                        <label class="form-label" for="form3Example4">Password</label>
+                    </div>
+
+                    <div class="form-outline mb-3">
+                        <select placeholder="Role" id="role" formControlName="role" class="signup-input form-control">
+                           <option value="" disabled>Select Role</option>
+                           <option value="Admin">Admin</option>
+                           <option value="Customer">Customer</option>
+                           <option value="Employee">Employee</option>
+                        </select>
+                        <div *ngIf="signupForm.controls['role'].errors && (signupForm.controls['role'].dirty || signupForm.controls['role'].touched)" class="signup-feedback invalid-feedback">
+                           Role is required.
+                        </div>
+                        <label class="form-label" for="form3Example4">Role</label>
+                    </div>
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit" [disabled]="signupForm.invalid" class="btn btn-primary btn-block">Signup</button>
+                        
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
