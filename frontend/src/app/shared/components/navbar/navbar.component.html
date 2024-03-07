@@ -1,11 +1,13 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-between">
     <div class="flex flex-row d-flex w-100 justify-content-between col-md-12">
-        <a class="navbar-brand col-md-2" (click)="loadCars()">Car Rental</a>
-        <div class="navbar-nav  flex flex-row d-flex col-md-6 justify-content-between">
-            <a class="nav-link" (click)="editBooking()" >Edit Booking</a>
-            <a class="nav-link" (click)="addCars()">Add Cars</a>
-            <a class="nav-link" (click)="showBills()">Show Bills</a>
-            <a class="nav-link" (click)="analytics()">Analytics</a>
-        </div>
+      <a class="navbar-brand col-md-2" (click)="loadCars()">Car Rental</a>
+      <div class="navbar-nav  flex flex-row d-flex col-md-6 justify-content-between">
+        <a class="nav-link" (click)="editBooking()">My Booking</a>
+        <a class="nav-link" (click)="addCars()">Add Cars</a>
+        <a class="nav-link" (click)="showBills()">My Bills</a>
+        <a class="nav-link" (click)="analytics()">Analytics</a>
+        <a class="nav-link"> Hello {{username}}</a>
+        <button class="btn btn-danger btn-sm" (click)="logout()">Sign Out</button>
+      </div>
     </div>
-</nav>
+  </nav>

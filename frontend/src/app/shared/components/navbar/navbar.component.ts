@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarService } from '../../services/car/car.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -10,7 +10,10 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  constructor(private carService: CarService,private router:Router,private jwtHelper: JwtHelperService,private dialog: MatDialog) {}
+  username: string;
+  constructor(private carService: CarService, private jwtHelper: JwtHelperService,private router:Router,@Inject(JWT_OPTIONS) private jwtOptions: any,private dialog: MatDialog) {
+    this.username = sessionStorage.getItem('username') || '';
+  }
 
   addCars(): void {
     
@@ -51,5 +54,10 @@ export class NavbarComponent {
   }
   loadCars():void{
     this.router.navigate(['/car/loadcars']);
+  }
+  logout(): void {
+    sessionStorage.clear();
+    localStorage.clear();
+    this.router.navigate(['/car/login']);
   }
 }

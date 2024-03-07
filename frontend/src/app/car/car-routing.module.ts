@@ -20,9 +20,9 @@ const routes: Routes = [
   { path: 'loadcars', component: CarComponent,canActivate: [AuthGuard]},
 
   { path: 'bookingsummary', component: BookingSummaryComponent ,canActivate: [AuthGuard]},
-  { path: 'editreservation', component: EditReservationComponent },
+  { path: 'editreservation', component: EditReservationComponent ,canActivate: [AuthGuard]},
   {path:'payments',component:PaymentsComponent,canActivate: [AuthGuard]},
-  {path:'signup',component:SignupComponent,canActivate: [AuthGuard]},
+  {path:'signup',component:SignupComponent},
   {path:'confirmationpage',component:ConfirmationPageComponent,canActivate: [AuthGuard]},
   {path:'insertcar',component:InsertCarComponent,canActivate: [AuthGuard]},
   {path:'billpage',component:BillPageComponent,canActivate: [AuthGuard]},

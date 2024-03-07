@@ -26,8 +26,8 @@ import { MatListModule } from '@angular/material/list';
 import { AnalyticsDashboardComponent } from './Pages/analytics-dashboard/analytics-dashboard.component';
 import { LandingPageComponent } from './Pages/landing-page/landing-page.component';
 import { ReviewsComponent } from './Pages/reviews/reviews.component';
-
-
+import { StarRatingModule } from 'angular-star-rating';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     CarComponent,
@@ -59,6 +59,8 @@ import { ReviewsComponent } from './Pages/reviews/reviews.component';
     MatDialogModule,
     MatCardModule,
     MatListModule,
+    StarRatingModule.forRoot(),
+    FormsModule
   ],
   providers:[
     JwtHelperService,

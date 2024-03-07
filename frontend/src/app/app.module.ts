@@ -14,6 +14,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { StarRatingModule } from 'angular-star-rating';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
   
   ],
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -31,6 +33,8 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
+    StarRatingModule.forRoot()
+    
   ],
   providers:[
     JwtHelperService,

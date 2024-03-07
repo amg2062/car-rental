@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CarService } from 'src/app/shared/services/car/car.service';
+
 @Component({
   selector: 'app-insert-car',
   templateUrl: './insert-car.component.html',
@@ -8,6 +9,7 @@ import { CarService } from 'src/app/shared/services/car/car.service';
 })
 export class InsertCarComponent {
   carForm: FormGroup;
+  imageUrl: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private carService: CarService) {
     this.carForm = this.formBuilder.group({
@@ -23,7 +25,12 @@ export class InsertCarComponent {
       Mileage: ['', Validators.required],
       Availability: ['', Validators.required],
       CostPerHour: ['', Validators.required],
-      LocationOfCar: ['']
+      LocationOfCar: [''],
+    
+    });
+
+    this.imageUrl=this.formBuilder.group({
+      imageUrl1: ['']
     });
   }
 
@@ -31,6 +38,25 @@ export class InsertCarComponent {
     if (this.carForm.invalid) {
       return;
     }
+
+    const carID:number = this.carForm.get('CarID').value;
+
+    const image = {
+      imageID:0,
+      imageUrl: this.imageUrl.value.imageUrl1,
+      carID: carID
+    };
+    console.log(image);
+    this.carService.insertImage(image).subscribe(
+      (response) => {
+        console.log('Image inserted successfully:', response);
+      
+      },
+      (error) => {
+        console.error('Error inserting image:', error);
+       
+      }
+    );
   
     this.carService.createCar(this.carForm.value).subscribe(
       (response) => {

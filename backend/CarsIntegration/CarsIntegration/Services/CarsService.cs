@@ -59,14 +59,23 @@ namespace CarsIntegration.Services
             return _carsRepository.GetBillsWithCarDetails();
         }
 
-        public void InsertReview(Review review)
+        public Review InsertReview(Review review)
         {
-             _carsRepository.InsertReview(review);
+           return  _carsRepository.InsertReview(review);
         }
 
         public IEnumerable<Review> GetReviewsByCarID(int carID)
         {
             return _carsRepository.GetReviewsByCarID(carID);
+        }
+
+        public Image GetImageByCarID(int carID)
+        {
+            return _carsRepository.GetImageByCarID(carID);
+        }
+        public void InsertImage(Image image)
+        {
+            _carsRepository.InsertImage(image);
         }
     }
 }

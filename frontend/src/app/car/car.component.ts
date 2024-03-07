@@ -1,27 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CarService } from '../shared/services/car/car.service';
-import { Car, Reservation } from '../shared/model/car/Car';
+import { Car, Image, Reservation, Review } from '../shared/model/car/Car';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationDialogComponentComponent } from './Pages/notification-dialog-component/notification-dialog-component.component';
+import { Observable, Subscription, tap } from 'rxjs';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
   styleUrls: ['./car.component.scss']
 })
 export class CarComponent implements OnInit {
+
+
+
   dateRangeForm = new FormGroup({
     startDate: new FormControl(this.getCurrentDate()),
     endDate: new FormControl(this.getNextDayDate())
   });
 
+
+  averageRatings: {[key: number]: number} = {};
+  hasReviews: boolean = true;
   cars: Car[] = [];
   carList: Car[] = [];
-  constructor(private carService: CarService,private router:Router,private jwtHelper: JwtHelperService,private dialog: MatDialog) {}
+  private averageRatingSubscriptions: Subscription[] = [];
+  constructor(private domSanitizer:DomSanitizer, private carService: CarService,private router:Router,private jwtHelper: JwtHelperService,private dialog: MatDialog) {}
 
   ngOnInit(): void {
+    console.log(sessionStorage.getItem("token")+"abc");
     this.carService.getUpcomingReservations().subscribe(reservations => {
       if (reservations.length > 0) {
         this.openNotificationDialog(reservations);
@@ -30,8 +40,14 @@ export class CarComponent implements OnInit {
 
     this.carService.fetch().subscribe((data: Car[]) => {
       this.carList = data;
+      console.log();
+     
+      console.log(this.carList);
+      this.getAverageRatings();
       this.onSubmit();
     });
+
+  
   }
 
   onSubmit(): void {
@@ -43,7 +59,9 @@ export class CarComponent implements OnInit {
     const endDate = new Date(endDateValue);
     this.carService.calculateTotalCost(startDate, endDate).subscribe(cars => {
       this.cars = cars;
+      this.fetchImagesForCars();
     });
+    
   } else {
     console.log("null error");
   }
@@ -76,12 +94,41 @@ openNotificationDialog(reservations: Reservation[]): void {
 
 private getCurrentDate(): string {
   const now = new Date();
-  return now.toISOString().slice(0, 16); // Format as yyyy-MM-ddTHH:mm
+  return now.toISOString().slice(0, 16); 
 }
 
 private getNextDayDate(): string {
   const now = new Date();
-  now.setDate(now.getDate() + 1); // Add one day to current date
-  return now.toISOString().slice(0, 16); // Format as yyyy-MM-ddTHH:mm
+  now.setDate(now.getDate() + 1); 
+  return now.toISOString().slice(0, 16); 
+}
+
+private getAverageRatings(): void {
+  this.carList.forEach((car) => {
+    this.averageRatingSubscriptions.push(
+      this.carService.getReviewsByCarID(car.carID).subscribe((reviews: Review[]) => {
+        if (reviews && reviews.length > 0) {
+          const sum = reviews.reduce((total, review) => total + review.rating, 0);
+          this.averageRatings[car.carID] = sum / reviews.length;
+        } else {
+          this.averageRatings[car.carID] = 0;
+        }
+      })
+    );
+  });
+}
+fetchImagesForCars(): void {
+  this.cars.forEach(car => {
+     this.carService.getImageByCarID(car.carID).subscribe((image) => {
+      console.log(image.imageUrl);
+       car.imageUrl = image.imageUrl; // Assuming you've added an imageUrl property to the Car interface
+     });
+  });
+ }
+ sanitizeImageUrl(url: string): SafeUrl {
+  return this.domSanitizer.bypassSecurityTrustUrl(url);
+}
+ngOnDestroy(): void {
+  this.averageRatingSubscriptions.forEach((subscription) => subscription.unsubscribe());
 }
 }

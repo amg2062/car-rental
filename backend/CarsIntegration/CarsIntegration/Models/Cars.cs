@@ -18,11 +18,13 @@ namespace CarsIntegration.Models
         public string LocationOfCar { get; set; }
 
         public decimal TotalCost { get; set; }
-      /*  public int ReservationID { get; internal set; }
-        public DateTime ReservationStart { get; internal set; }
-        public DateTime ReservationEnd { get; internal set; }
-        public decimal TotalCarCost { get; internal set; }
-        public string Status { get; internal set; }*/
+
+      
+        /*  public int ReservationID { get; internal set; }
+          public DateTime ReservationStart { get; internal set; }
+          public DateTime ReservationEnd { get; internal set; }
+          public decimal TotalCarCost { get; internal set; }
+          public string Status { get; internal set; }*/
     }
 
    /* public class Reservation

@@ -5,7 +5,7 @@
         <div class="col-md-6 text-center">
             <h2 class="mb-4">Payment Details</h2>
             <div class="alert alert-info" role="alert">
-                Total amount to pay: <strong>{{selectedReservation.totalCarCost}}</strong>
+                Total amount to pay: <strong>{{selectedReservation.totalCarCost | currency: 'USD'}}</strong>
             </div>
             <div class="alert alert-warning" role="alert">
                 Please do not refresh the page while the transaction is processing.

@@ -29,20 +29,25 @@
              <div class="card-header">
                <h2 class="card-title">{{ car.manufacturer }}</h2>
                <p class="card-subtitle mb-2 text-muted">{{ car.model }}</p>
+               <p class="card-subtitle mb-2 text-muted">Average Rating: {{ averageRatings[car.carID] | number: '1.2-2'}}</p>
+
+               
              </div>
              <div class="card-body">
                <!-- <p class="card-text">Car ID: {{ car.carID }}</p> -->
                <p class="card-text"> <strong>Year of Manufacture:</strong>  {{ car.yearOfManufacture }}</p>
                <p class="card-text"><strong>Transmission Type:</strong> {{ car.transmissionType }}</p>
-               <p class="card-text"><strong>Cost per Hour:</strong> {{ car.costPerHour }}</p>
+               <p class="card-text"><strong>Cost per Hour:</strong> {{ car.costPerHour |  currency:'USD':true  }}</p>
                <p class="card-text"><strong>Mileage:</strong> {{ car.mileage }}</p>
-               
+               <img [src]="car.imageUrl" alt="Car Image" class="card-img-top" onError="this.src='assets/cars2.jpg'">
+
+
                <!-- <p class="card-text">Availability: {{ car.availability ? 'Available' : 'Not Available' }}</p> -->
              </div>
              <div class="card-footer flex d-flex flex-row justify-content-between">
                <button class="btn btn-primary" (click)="showBookingSummary(car) ">Book</button>
                <button class="btn btn-primary" (click)="giveReview(car) ">Review</button>
-               <p class="card-text align-self-center" style="font-size: 1.1rem;">Total Cost: {{ car.totalCost }}</p>
+               <p class="card-text align-self-center" style="font-size: 1.1rem;"><strong>Total : {{ car.totalCost | currency:'USD':true }}</strong> </p>
              </div>
            </div>
          </div>

@@ -167,7 +167,7 @@ public IActionResult DeleteReservationAndUpdateCar(int reservationId)
             return Ok(bills);
         }
 
-        [Authorize(Roles = "Customer,Admin, Employee")]
+        [Authorize(Roles = "Customer,Admin")]
         [HttpGet("bills")]
         public IActionResult GetBillsWithCarDetails()
         {
@@ -180,8 +180,8 @@ public IActionResult DeleteReservationAndUpdateCar(int reservationId)
 
             return Ok(bills);
         }
-
-        
+        [Authorize(Roles = "Customer,Admin")]
+ 
         [HttpPost("create-review")]
         public IActionResult CreateReview([FromBody] Review review)
         {
@@ -189,11 +189,14 @@ public IActionResult DeleteReservationAndUpdateCar(int reservationId)
             {
                 return BadRequest(ModelState);
             }
+            var createdReview = _carsService.InsertReview(review);
+            return Ok(createdReview);
 
-            _carsService.InsertReview(review);
-            return Ok();
+      
         }
-     
+
+
+        [Authorize(Roles = "Customer,Admin, Employee")]
         [HttpGet("reviews/{carID}")]
         public IActionResult GetReviewsByCarID(int carID)
         {
@@ -205,6 +208,32 @@ public IActionResult DeleteReservationAndUpdateCar(int reservationId)
             }
 
             return Ok(reviews);
+        }
+        [Authorize(Roles = "Customer,Admin, Employee")]
+        [HttpGet("image/{carID}")]
+        public IActionResult GetImageByCarID(int carID)
+        {
+            var image = _carsService.GetImageByCarID(carID);
+
+            if (image == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(image);
+        }
+
+        [Authorize(Roles = "Customer,Admin, Employee")]
+        [HttpPost("image")]
+        public IActionResult InsertImage([FromBody] Image image)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _carsService.InsertImage(image);
+            return Ok();
         }
     }
 }

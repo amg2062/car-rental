@@ -46,10 +46,11 @@ export class LoginComponent implements OnInit {
   //
   const userId = response.userId;
   const token = response.token;
- 
-
+ const username=response.username;
+ console.log(username);
   localStorage.setItem('userId', userId);
   localStorage.setItem('token', token);
+  sessionStorage.setItem('username',username)
   //
         sessionStorage.setItem('token', response.token);
         console.log(response);

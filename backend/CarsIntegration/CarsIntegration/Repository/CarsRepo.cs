@@ -6,6 +6,7 @@ using CarsIntegration.Models;
 using Microsoft.VisualBasic.FileIO;
 using System.Data.SqlTypes;
 using System.Data;
+using CarsIntegration.Controllers;
 
 namespace CarsIntegration.Repository
 {
@@ -18,6 +19,7 @@ namespace CarsIntegration.Repository
             _connectionString = "Data Source=APINP-ELPTXZHFJ\\SQLEXPRESS02;Initial Catalog=carRental;User ID=tap2023;Password=tap2023;Encrypt=False";
         }
 
+
         public IEnumerable<Cars> GetCars(DateTime startDate, DateTime endDate)
         {
             var cars = new List<Cars>();
@@ -25,13 +27,13 @@ namespace CarsIntegration.Repository
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string query = @"
-           SELECT * FROM Cars
-WHERE NOT EXISTS (
-    SELECT 1 FROM Reservations
-    WHERE Reservations.CarID = Cars.CarID AND 
-    ((ReservationStart <= @EndDate AND ReservationEnd >= @StartDate) OR 
-    (ReservationStart >= @StartDate AND ReservationEnd <= @EndDate))
-            )";
+            SELECT * FROM Cars
+ WHERE NOT EXISTS (
+     SELECT 1 FROM Reservations
+     WHERE Reservations.CarID = Cars.CarID AND 
+     ((ReservationStart <= @EndDate AND ReservationEnd >= @StartDate) OR 
+     (ReservationStart >= @StartDate AND ReservationEnd <= @EndDate))
+             )";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -100,7 +102,7 @@ WHERE NOT EXISTS (
                 }
         */
 
-        public Reservation CreateReservation(Reservation reservation)
+        public Models.Reservation CreateReservation(Models.Reservation reservation)
         {
             if (reservation.Status != "booked" && reservation.Status != "pending")
             {
@@ -165,9 +167,9 @@ WHERE NOT EXISTS (
         }
 
 
-        public Reservation GetReservationById(int id)
+        public Models.Reservation GetReservationById(int id)
         {
-            Reservation reservation = null;
+            Models.Reservation reservation = null;
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -182,7 +184,7 @@ WHERE NOT EXISTS (
                     {
                         if (reader.Read())
                         {
-                            reservation = new Reservation()
+                            reservation = new Models.Reservation()
                             {
                                 ReservationID = (int)reader["ReservationID"],
                                 CarID = (int)reader["CarID"],
@@ -346,7 +348,7 @@ WHERE NOT EXISTS (
         }
         //
 
-        public Reservation CreateBill(Bill bill)
+        public Models.Reservation CreateBill(Bill bill)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -379,7 +381,7 @@ WHERE NOT EXISTS (
            
 
             // Return the reservation data (if needed)
-            return new Reservation();
+            return new Models.Reservation();
         }
 
 
@@ -503,7 +505,7 @@ WHERE NOT EXISTS (
         }
 
 
-        public void InsertReview(Review review)
+        public  Review InsertReview(Review review)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -521,6 +523,7 @@ WHERE NOT EXISTS (
                     insertCommand.ExecuteNonQuery();
                 }
             }
+            return review;
         }
 
         public IEnumerable<Review> GetReviewsByCarID(int carID)
@@ -556,6 +559,54 @@ WHERE NOT EXISTS (
             }
 
             return reviews;
+        }
+
+        public Image GetImageByCarID(int carID)
+        {
+            Image image = null;
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT ImageID, Image FROM Image WHERE CarID = @CarID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@CarID", carID);
+
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            image = new Image()
+                            {
+                                ImageID = (int)reader["ImageID"],
+                                ImageUrl = (string)reader["Image"],
+                                CarID = carID
+                            };
+                        }
+                    }
+                }
+            }
+
+            return image;
+        }
+        public void InsertImage(Image image)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string insertImageQuery = "INSERT INTO Image (Image, CarID) " +
+                                            "VALUES (@Image, @CarID)";
+
+                using (SqlCommand insertCommand = new SqlCommand(insertImageQuery, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@Image", image.ImageUrl);
+                    insertCommand.Parameters.AddWithValue("@CarID", image.CarID);
+
+                    connection.Open();
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

@@ -14,6 +14,8 @@ export interface Car {
     transmissionType: string;
     yearOfManufacture: number;
     totalCost: number;
+    averageRating?: number; 
+    imageUrl?: string;
   }
 
 
@@ -58,10 +60,16 @@ export interface Car {
     carDetails: Car;
   }
 
-  export interface Review{
-    reviewID: number;
+  export interface Review {
+    RatingID?: number;
     rating: number;
-    review: string;
-    userID:number;
+    reviewText: string;
+    userID: number;
+    carID: number;
+  }
+
+  export class Image {
+    imageID: number;
+    imageUrl: string;
     carID: number;
   }

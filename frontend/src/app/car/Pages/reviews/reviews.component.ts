@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, resolveForwardRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Car, Review } from 'src/app/shared/model/car/Car';
 import { CarService } from 'src/app/shared/services/car/car.service';
+import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-reviews',
   templateUrl: './reviews.component.html',
@@ -13,8 +14,9 @@ export class ReviewsComponent implements OnInit {
   reviewForm: FormGroup;
   selectedReview: Car;
   userID: number;
+  ratingControl = new FormControl();
+  fetchedReviews: Review[];
 
- 
   constructor(private fb: FormBuilder, private carService: CarService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -26,37 +28,52 @@ export class ReviewsComponent implements OnInit {
     this.userID=parseInt(localStorage.getItem('userId'));
     console.log(this.userID);
     this.reviewForm = this.fb.group({
-      reviewID:[''],
       rating: ['', Validators.required],
-      review: ['', Validators.required],
-      userID: this.userID,
-      carID: this.selectedReview.carID,
-      
+      reviewText: ['', Validators.required]
     });
 
-
-  }
-
-  createReview(): void {
-    if (this.reviewForm.invalid) {
-      return;
-    }
-
-    const review: Review = {
-      reviewID: 0, 
-      rating: this.reviewForm.get('rating').value,
-      review: this.reviewForm.get('review').value, 
-      userID: this.userID,
-      carID: this.selectedReview.carID,
-    };
-
-    this.carService.createReview(this.reviewForm.value).subscribe(
+    this.carService.getReviewsByCarID(this.selectedReview.carID).subscribe(
       (response) => {
+        
+        this.fetchedReviews = response;
+        
         console.log(response);
       },
       (error) => {
         console.log(error);
       }
     );
+    
+  }
+
+  onSubmit(): void {
+    if (this.reviewForm.invalid) {
+      return;
+    }
+
+    const rating = this.reviewForm.controls['rating'].value;
+    const reviewText = this.reviewForm.controls['reviewText'].value;
+
+    const review = {
+      rating: rating,
+      reviewText: reviewText,
+      userID: this.userID,
+      carID: this.selectedReview.carID 
+    };
+
+    
+    this.carService.createReview(review).subscribe(
+      (response) => {
+        this.fetchedReviews.push(response);
+        console.log(response);
+        
+        this.reviewForm.reset();
+        
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    
   }
 }

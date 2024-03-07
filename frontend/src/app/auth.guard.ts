@@ -9,10 +9,13 @@ export class AuthGuard implements CanActivate {
  
   canActivate(): boolean {
     const token = sessionStorage.getItem('token');
+
     if (token) {
+      console.log("chal raha hai");
       return true;
+      
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/car']);
       return false;
     }
   }

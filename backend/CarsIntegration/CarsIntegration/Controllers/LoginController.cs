@@ -44,7 +44,7 @@ namespace CarsIntegration.Controllers
                 _configuration["Jwt:Issuer"],
                 _configuration["Jwt:Audience"],
                 claims,
-                expires: DateTime.Now.AddSeconds(5),
+                expires: DateTime.Now.AddSeconds(1000),
                 signingCredentials: credentials
             );
 
@@ -76,7 +76,7 @@ namespace CarsIntegration.Controllers
                 var token = GenerateToken(new Users { Username = username, Role = role ,Password=password});
 
                 // Include the user ID in the response
-                return Ok(new { token, userId,role });
+                return Ok(new { token, userId,role,username });
             }
 
             return Unauthorized(); // Invalid credentials

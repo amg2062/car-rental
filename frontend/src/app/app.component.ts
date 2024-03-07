@@ -20,7 +20,14 @@ export class AppComponent implements OnInit {
       }
     });
  }
- ngOnInit(): void {
-      this.router.navigate(['/car/']);
+ ngOnInit(){
+  const token = sessionStorage.getItem('token');
+  if (token) {
+      return true;
+  } else {
+    sessionStorage.clear();
+    this.router.navigate(['/car']);
+    return false;
+    
  }
-}
+}}

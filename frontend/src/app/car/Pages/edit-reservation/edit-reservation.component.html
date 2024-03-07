@@ -13,7 +13,7 @@
                         <p><strong>Car Location</strong> {{reservation.carDetails.locationOfCar}}</p>
                         <p><strong>Start Date:</strong> {{ reservation.reservationStart | date:'shortDate' }}</p>
                         <p><strong>End Date:</strong> {{ reservation.reservationEnd | date:'shortDate' }}</p>
-                        <p><strong>Total Cost:</strong> {{ reservation.totalCarCost | currency:'INR':true }}</p>
+                        <p><strong>Total Cost:</strong> {{ reservation.totalCarCost | currency:'USD':true }}</p>
                         <p><strong>Status:</strong> {{ reservation.status }}</p>
                     </div>
                     <div class="reservation-card__footer flex flex-row justify-content-between d-flex w-50">

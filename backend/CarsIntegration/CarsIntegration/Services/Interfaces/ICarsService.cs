@@ -23,8 +23,11 @@ namespace CarsIntegration.Services.Interfaces
         IEnumerable<Bill2> GetBillsByUserIdWithCarDetails(int userId);
 
         IEnumerable<Bill2> GetBillsWithCarDetails();
-        void InsertReview(Review review);
+        Review InsertReview(Review review);
         IEnumerable<Review> GetReviewsByCarID(int carID);
+
+        Image GetImageByCarID(int carID);
+        void InsertImage(Image image);
 
     }
 }

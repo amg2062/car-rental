@@ -20,7 +20,7 @@ export class BookingSummaryComponent implements OnInit {
   constructor(private route: ActivatedRoute,private carService:CarService, private router:Router) { }
 
   ngOnInit(): void {
-    const userId = localStorage.getItem('userId');
+    const userId = sessionStorage.getItem('userId');
     if (userId) {
      console.log(userId);
     } else {
@@ -29,7 +29,7 @@ export class BookingSummaryComponent implements OnInit {
 
 
     if (typeof(Storage) !== "undefined") {
-      // Code for localStorage/sessionStorage.
+
      } else {
       console.error('Web Storage is not supported in this browser.');
      }

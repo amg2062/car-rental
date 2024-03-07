@@ -319,8 +319,8 @@ export class AnalyticsDashboardComponent implements OnInit {
           datasets: [
             {
               data: this.carTypeData.map((data) => data.count),
-              backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 94, 250, 0.988)'],
-              borderColor: ['rgba(75, 192, 192, 1)', 'rgba(244, 15, 237, 0.988)'],
+              backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 94, 250, 0.988)', 'rgba(4, 94, 250, 0.988)'],
+              borderColor: ['rgba(75, 192, 192, 1)', 'rgba(244, 15, 237, 0.988)','rgba(4, 15, 237, 0.988)'],
               borderWidth: 1
             }
           ]

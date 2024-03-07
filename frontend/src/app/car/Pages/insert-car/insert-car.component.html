@@ -83,6 +83,20 @@
           <label for="LocationOfCar">Location of Car:</label>
           <input type="text" class="form-control" formControlName="LocationOfCar">
         </div>
+
+<form action="" [formGroup]="imageUrl" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="ImageUrl">Image URL:</label>
+    <input type="text" class="form-control"  name="ImageUrl" formControlName="imageUrl1">
+    <div *ngIf="carForm.get('ImageUrl').invalid && carForm.get('ImageUrl').touched" class="text-danger">
+      Image URL is required.
+    </div>
+  </div>
+
+</form>
+        
+
+
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
